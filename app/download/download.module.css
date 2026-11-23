@@ -1,8 +1,4 @@
 /* Page · download */
-:global(:is(.pp.awake .pp-off)):where(.root, .root *){opacity:0;pointer-events:none}
-:global(:is(.pp.awake .pp-app)):where(.root, .root *){opacity:1}
-:global(:is(.pp.awake .pp-app [style*="--k"])):where(.root, .root *){opacity:1;transform:none;transition-delay:calc(.15s + var(--k)*90ms)}
-:global(:is(.pp.awake .pp-home)):where(.root, .root *){opacity:1}
 /* ---------- device frames ---------- */
 :global(:is(.ax-fit)):where(.root, .root *){position:relative;overflow:hidden}
 :global(:is(.ax-fit>.ax-stage)):where(.root, .root *){position:absolute;left:0;top:0;transform-origin:0 0;transform:scale(var(--k,.4))}
