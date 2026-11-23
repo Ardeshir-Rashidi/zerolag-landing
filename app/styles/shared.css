@@ -684,6 +684,10 @@ html.lock,html.lock body{overflow:hidden}
 .pp-off small{font-size:12.5px;color:#3a3a3a;line-height:1.5}
 .pp-app{position:absolute;inset:0;display:flex;flex-direction:column;padding:0 14px 0;opacity:0;transition:opacity .5s;background:radial-gradient(120% 50% at 50% 0%,rgba(0,112,243,.12),transparent 60%),#000}
 .pp-app [style*="--k"]{opacity:0;transform:translateY(12px) scale(.98);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.pp.awake .pp-off{opacity:0;pointer-events:none}
+.pp.awake .pp-app{opacity:1}
+.pp.awake .pp-app [style*="--k"]{opacity:1;transform:none;transition-delay:calc(.15s + var(--k)*90ms)}
+.pp.awake .pp-home{opacity:1}
 .pp-status{height:44px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:13px;direction:ltr}
 .pp-status .island{width:86px;height:25px;border-radius:999px;background:#0d0d0d}
 .pp-top{display:flex;align-items:center;gap:8px;padding:6px 2px 0;font-size:14px}
