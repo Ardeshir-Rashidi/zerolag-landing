@@ -78,7 +78,10 @@ if (!window.ZLBOOT) window.ZLBOOT = function () {
   };
   const gcKm = (a, b) => angle(a, b) * 6371;
   /* great-circle points from a to b, lifted off the surface towards the middle */
+  const ARCS = new Map();
   function arcPoints(a, b, lift) {
+    const key = [a.lon, a.lat, b.lon, b.lat, lift].join('|');
+    if (ARCS.has(key)) return ARCS.get(key);
     const u = vec(a.lon, a.lat),
       w = vec(b.lon, b.lat);
     const ang = Math.acos(clamp(u[0] * w[0] + u[1] * w[1] + u[2] * w[2], -1, 1));
@@ -91,6 +94,8 @@ if (!window.ZLBOOT) window.ZLBOOT = function () {
       const [lo, la] = unvec([u[0] * s1 + w[0] * s2, u[1] * s1 + w[1] * s2, u[2] * s1 + w[2] * s2]);
       out.push([lo, la, 1 + lift * Math.sin(Math.PI * t) * Math.min(.22, ang * .32)])
     }
+    if (ARCS.size >= 256) ARCS.delete(ARCS.keys().next().value);
+    ARCS.set(key, out);
     return out
   }
   /* orthographic projection → [x, y, z]; z > 0 means the point faces the viewer */
@@ -773,15 +778,21 @@ void main(){vec2 q=(vP-uC)/uR;q.y=-q.y;float d=dot(q,q);
       visible = true,
       pins = [],
       flagDirty = false,
-      camKey = "";
+      camKey = "",
+      sceneKey = "",
+      scene = null,
+      inViewport = true;
     /* current model */
     function model() {
+      const key = [S.sel, S.city, S.status].join('|');
+      if (scene && sceneKey === key) return scene;
+      sceneKey = key;
       const s = byId.get(S.sel) || o.servers[0];
       const city = s ? (s.cities.find(c => c.id === S.city) || bestCity(s)) : {
         lon: home.lon,
         lat: home.lat
       };
-      return {
+      return scene = {
         s,
         city,
         routes: routesFor(home, city, o.relays),
@@ -860,6 +871,8 @@ void main(){vec2 q=(vP-uC)/uR;q.y=-q.y;float d=dot(q,q);
       if (!W || !H) return;
       const dpr = Math.min(2, window.devicePixelRatio || 1),
         gdpr = Math.min(1.5, dpr);
+      if (V.W === W && V.H === H && V.dpr === dpr) return;
+      camKey = '';
       cvo.width = Math.round(W * dpr);
       cvo.height = Math.round(H * dpr);
       cvg.width = Math.round(W * gdpr);
@@ -916,6 +929,7 @@ void main(){vec2 q=(vP-uC)/uR;q.y=-q.y;float d=dot(q,q);
     }
 
     function renderPins() {
+      camKey = '';
       if (o.net) {
         pinsEl.innerHTML = "";
         pins = [];
@@ -1406,7 +1420,8 @@ void main(){vec2 q=(vP-uC)/uR;q.y=-q.y;float d=dot(q,q);
     function frame(now) {
       raf = 0;
       if (!alive || !visible || !V.ready) return;
-      const fi = window.__zlBusy ? 50 : (o.interactive && !o.net ? 0 : 31);
+      // Camera movement follows the display refresh rate; idle route particles can use 30 fps.
+      const fi = V.anim ? 0 : (window.__zlBusy ? 31 : (o.interactive && !o.net ? 0 : 31));
       if (fi && now - (V.lf || 0) < fi) {
         raf = requestAnimationFrame(frame);
         return
@@ -1417,9 +1432,14 @@ void main(){vec2 q=(vP-uC)/uR;q.y=-q.y;float d=dot(q,q);
       } else {
         if (V.anim) stepAnim(now);
         const m = model();
-        if (G) drawGL(m);
+        const key = [V.W, V.H, V.lon, V.lat, V.R, S.sel, S.city].join('|');
+        const moved = key !== camKey;
+        // Terrain has no time-dependent shader uniforms. Reuse its last frame while
+        // the camera is still; only the lightweight route overlay keeps animating.
+        if (G && (moved || flagDirty || Math.abs(G.on - (m.live ? 1 : .7)) > .001)) drawGL(m);
         drawOverlay(now, m);
-        placePins()
+        if (moved) placePins();
+        camKey = key;
       }
       raf = requestAnimationFrame(frame)
     }
@@ -1576,12 +1596,13 @@ void main(){vec2 q=(vP-uC)/uR;q.y=-q.y;float d=dot(q,q);
     const ro = new ResizeObserver(resize);
     ro.observe(el);
     const io = new IntersectionObserver(es => {
-      visible = es[0].isIntersecting && !document.hidden;
+      inViewport = es[0].isIntersecting;
+      visible = inViewport && !document.hidden;
       wake()
     });
     io.observe(el);
     const onVis = () => {
-      visible = !document.hidden;
+      visible = inViewport && !document.hidden;
       wake()
     };
     document.addEventListener("visibilitychange", onVis);
@@ -1591,6 +1612,7 @@ void main(){vec2 q=(vP-uC)/uR;q.y=-q.y;float d=dot(q,q);
     });
     cvg.addEventListener("webglcontextrestored", () => {
       G = createGL(cvg, homeGi);
+      camKey = '';
       wake()
     });
     const api = {
