@@ -6,6 +6,10 @@ An interactive front-end prototype of the ZeroLag marketing website, designed an
 
 This repository contains the **landing and marketing website**. The ZeroLag dashboard and application are separate projects and will be added independently.
 
+[View live demo](https://ardeshir-rashidi.github.io/zerolag-landing/)
+
+![ZeroLag marketing website preview](docs/images/landing-preview.jpg)
+
 ## Tech Stack
 
 <p>
