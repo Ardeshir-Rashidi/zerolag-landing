@@ -1,0 +1,6 @@
+/* Page · apps */
+:global(:is(.st.bad)):where(.root, .root *){color:var(--red)}
+:global(:is(.mk .ms .st)):where(.root, .root *){font-size:12px}
+/* ---------- Apps: centred hero, the devices sit open under it ---------- */
+:global(:is(.page .phero.phc)):where(.root, .root *){grid-template-columns:minmax(0,1fr)!important;justify-items:center;text-align:center;padding-bottom:28px!important}
+:global(:is(.page .phero.phc .lead)):where(.root, .root *){justify-self:center;max-width:52ch}

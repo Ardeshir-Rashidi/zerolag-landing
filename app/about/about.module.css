@@ -1,0 +1,41 @@
+/* Page · about */
+/* ---------- about ---------- */
+:global(:is(.flow)):where(.root, .root *){position:relative;height:200px;max-width:880px;margin:0 auto 40px;direction:ltr}
+:global(:is(.flow > svg)):where(.root, .root *){position:absolute;inset:0;width:100%;height:100%}
+:global(:is(.fbox)):where(.root, .root *){position:absolute;top:50%;transform:translateY(-50%);padding:12px 16px;border-radius:10px;background:var(--bg);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);text-align:center}
+:global(:is(.fbox b)):where(.root, .root *){display:block;font-weight:500;font-size:15px}
+:global(:is(.fbox code)):where(.root, .root *){font:11.5px var(--mono);color:var(--ink3)}
+:global(:is(.fbox.l)):where(.root, .root *){left:0;width:170px}
+:global(:is(.fbox.r)):where(.root, .root *){right:0;width:170px}
+:global(:is(.fbox.c)):where(.root, .root *){left:50%;transform:translate(-50%,-50%);width:112px;height:92px;display:grid;place-items:center;align-content:center;gap:4px}
+:global(:is(.fbox.c .logo)):where(.root, .root *){width:28px;height:28px}
+:global(:is(.flbl)):where(.root, .root *){position:absolute;top:calc(50% - 30px);font:10.5px var(--mono);color:var(--ink3);transform:translateX(-50%);letter-spacing:.06em}
+@media (max-width:640px){
+  :global(:is(.fbox.l)):where(.root, .root *),:global(:is(.fbox.r)):where(.root, .root *){width:110px;padding:10px}
+  :global(:is(.fbox code)):where(.root, .root *){display:none}
+  :global(:is(.fbox.c)):where(.root, .root *){width:84px}
+}
+:global(:is(.story2)):where(.root, .root *){display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;padding-block:40px 72px}
+:global(:is(.story2 p+p)):where(.root, .root *){margin-top:20px}
+@media (max-width:820px){
+  :global(:is(.story2)):where(.root, .root *){grid-template-columns:1fr}
+}
+:global(:is(.figs)):where(.root, .root *){display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+:global(:is(.figs>div)):where(.root, .root *){padding:0 32px 8px;border-inline-start:1px solid var(--line)}
+:global(:is(.figs>div:first-child)):where(.root, .root *){border:0;padding-inline-start:0}
+:global(:is(.figs .fk)):where(.root, .root *){font:11px var(--mono);color:var(--ink4);letter-spacing:.06em}
+:global(:is(.figs svg)):where(.root, .root *){display:block;width:100%;height:260px;margin:24px 0;overflow:visible}
+:global(:is(.figs svg path)):where(.root, .root *),:global(:is(.figs svg polygon)):where(.root, .root *),:global(:is(.figs svg line)):where(.root, .root *),:global(:is(.figs svg ellipse)):where(.root, .root *){vector-effect:non-scaling-stroke}
+:global(:is(.figs h4)):where(.root, .root *){font-size:16px;font-weight:500;margin-bottom:8px}
+:global(:is(.figs p)):where(.root, .root *){color:var(--ink2);font-size:15px;line-height:1.55}
+:global(:is(.iso)):where(.root, .root *){transition:transform .9s var(--ease)}
+@media (max-width:820px){
+  :global(:is(.figs)):where(.root, .root *){grid-template-columns:1fr;gap:28px}
+  :global(:is(.figs>div)):where(.root, .root *){border:0;padding:0;border-top:1px solid var(--line);padding-top:24px}
+  :global(:is(.figs>div:first-child)):where(.root, .root *){border:0;padding-top:0}
+}
+:global(:is(.figs .iso)):where(.root, .root *){transform:translateY(calc(var(--k)*6px));transition:transform 1s var(--ease)}
+:global(:is(.figs .rv.in .iso)):where(.root, .root *){transform:none}
+:global(:is(.figs > div:hover .iso)):where(.root, .root *){transform:translateY(calc(var(--k)*-5px))}
+:global(:is(.figs .rise polygon)):where(.root, .root *){transition:opacity .4s}
+:global(:is(.fbw .figs>*)):where(.root, .root *){padding:var(--rg)!important}

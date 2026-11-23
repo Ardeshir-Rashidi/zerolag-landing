@@ -1,0 +1,151 @@
+/* Home · desktop */
+:global(:is(.sig)):where(.root, .root *){display:inline-flex;align-items:center;gap:5px;font:500 12px var(--mono);color:var(--ink);white-space:nowrap;direction:ltr}
+:global(:is(.sig svg)):where(.root, .root *){width:11px;height:11px;color:var(--ink3)}
+:global(:is(.sig small)):where(.root, .root *){color:var(--ink3);font-size:11px}
+:global(:is(.sig.mid svg)):where(.root, .root *){color:var(--amber)}
+:global(:is(.sig.good svg)):where(.root, .root *){color:var(--green2)}
+:global(:is(.pane)):where(.root, .root *){position:absolute;inset:0;padding:16px;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s;display:flex;flex-direction:column;gap:12px}
+:global(:is(.pane.on)):where(.root, .root *){opacity:1;visibility:visible;transform:none}
+/* "one dashboard" · vercel.com/workflows + for/web-apps */
+:global(:is(.wf)):where(.root, .root *){display:grid;grid-template-columns:minmax(260px,.6fr) minmax(0,1.4fr);gap:clamp(32px,5vw,72px);margin-top:56px;align-items:center}
+:global(:is(.wf-l)):where(.root, .root *){display:flex;flex-direction:column;gap:36px}
+:global(:is(.wf-steps)):where(.root, .root *){list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:40px}
+:global(:is(.wf-steps li)):where(.root, .root *){position:relative}
+:global(:is(.wf-steps li:not(:last-child))):where(.root, .root *)::after,:global(:is(.wf-steps li:not(:last-child))):where(.root, .root *)::before{content:"";position:absolute;inset-inline-start:16px;top:38px;width:1px;background:var(--line2)}
+:global(:is(.wf-steps li:not(:last-child))):where(.root, .root *)::after{bottom:-38px}
+:global(:is(.wf-steps li:not(:last-child))):where(.root, .root *)::before{height:calc((100% + 2px) * var(--p,0));background:#a1a1a1;z-index:1}
+:global(:is(.wf-steps button)):where(.root, .root *){display:flex;gap:16px;align-items:flex-start;text-align:start;width:100%}
+:global(:is(.wf-ic)):where(.root, .root *){width:33px;height:33px;flex:none;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line3);background:var(--bg);color:var(--ink3);transition:all .3s}
+:global(:is(.wf-ic .ic)):where(.root, .root *){width:16px;height:16px}
+:global(:is(.wf-steps li.on .wf-ic)):where(.root, .root *){background:#ededed;color:#0a0a0a;box-shadow:0 0 0 5px rgba(255,255,255,.06)}
+:global(:is(.wf-t)):where(.root, .root *){font-size:16px;line-height:1.55;color:var(--ink4);transition:color .3s}
+:global(:is(.wf-t b)):where(.root, .root *){font-weight:600;color:var(--ink3);transition:color .3s}
+:global(:is(.wf-steps li.on .wf-t)):where(.root, .root *){color:var(--ink2)}
+:global(:is(.wf-steps li.on .wf-t b)):where(.root, .root *){color:var(--ink)}
+:global(:is(.wf-steps button:hover .wf-t b)):where(.root, .root *){color:var(--ink)}
+:global(:is(.wf-l>.btn)):where(.root, .root *){align-self:flex-start;margin-inline-start:49px}
+:global(:is(.wf-r)):where(.root, .root *){position:relative;border-radius:14px;box-shadow:inset 0 0 0 1px var(--line2);background:#070707;height:540px}
+:global(:is(.wf-r>.pane)):where(.root, .root *){position:absolute;inset:16px;padding:0;display:block;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease),visibility .45s}
+:global(:is(.wf-r>.pane.on)):where(.root, .root *){opacity:1;visibility:visible;transform:none}
+:global(:is(.tree)):where(.root, .root *){position:relative;height:100%;display:grid;grid-template-columns:auto auto auto minmax(0,1fr) auto;column-gap:22px;align-items:center;direction:ltr;padding:0 6px}
+:global(:is(.tr-svg)):where(.root, .root *){position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+:global(:is(.tr-c)):where(.root, .root *),:global(:is(.tr-pill)):where(.root, .root *){position:relative;z-index:1}
+:global(:is(.tr-c)):where(.root, .root *){display:flex;flex-direction:column;gap:20px}
+:global(:is(.tr-c>small)):where(.root, .root *){position:absolute;bottom:calc(100% + 10px);left:2px;font-size:12.5px;color:var(--ink3);white-space:nowrap}
+:global(:is(.tr-tile)):where(.root, .root *){width:58px;height:58px;border-radius:12px;background:#ededed;display:grid;place-items:center}
+:global(:is(.tr-tile svg)):where(.root, .root *){width:30px;height:30px}
+:global(:is(.tr-node)):where(.root, .root *){display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line2);background:#0e0e0e}
+:global(:is(.tr-node .flag)):where(.root, .root *){width:28px;height:28px;border-radius:7px}
+:global(:is(.tr-node b)):where(.root, .root *),:global(:is(.tr-bi b)):where(.root, .root *){display:block;font-size:13px;font-weight:500;white-space:nowrap}
+:global(:is(.tr-node small)):where(.root, .root *),:global(:is(.tr-bi small)):where(.root, .root *){display:block;font-size:11.5px;color:var(--ink3);white-space:nowrap}
+:global(:is(.tr-pill)):where(.root, .root *){font-size:11.5px;font-weight:500;color:#fff;background:#0070f3;padding:4px 10px;border-radius:999px;white-space:nowrap}
+:global(:is(.tr-box)):where(.root, .root *){border-radius:10px;box-shadow:inset 0 0 0 1px var(--line2);background:#0e0e0e;transition:box-shadow .3s}
+:global(:is(.tr-bh)):where(.root, .root *){padding:8px 12px;font-size:12px;color:var(--ink3);border-bottom:1px solid var(--line);white-space:nowrap}
+:global(:is(.tr-bh b)):where(.root, .root *){color:var(--ink);font-weight:500}
+:global(:is(.tr-bi)):where(.root, .root *){display:flex;align-items:center;gap:10px;padding:10px 12px}
+:global(:is(.tr-ic)):where(.root, .root *){width:28px;height:28px;flex:none;border-radius:7px;display:grid;place-items:center;background:#1c1c1c;color:var(--ink2)}
+:global(:is(.tr-ic .ic)):where(.root, .root *){width:14px;height:14px}
+:global(:is(.tr-box.win)):where(.root, .root *){box-shadow:inset 0 0 0 1px rgba(50,145,255,.7),0 0 26px -8px rgba(0,112,243,.7)}
+:global(:is(.tr-c.c3)):where(.root, .root *){min-width:150px;display:block}
+:global(:is(.tr-dom)):where(.root, .root *){position:absolute;left:0;display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px 0 6px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line2);background:#0e0e0e;font-size:12.5px;white-space:nowrap}
+:global(:is(.tr-dom img)):where(.root, .root *){width:22px;height:22px;border-radius:50%;object-fit:cover}
+:global(:is(.tr-dom.win)):where(.root, .root *){box-shadow:inset 0 0 0 1px rgba(50,145,255,.7)}
+@media (max-width:1180px){
+  :global(:is(.tree .c0)):where(.root, .root *){display:none}
+  :global(:is(.tree)):where(.root, .root *){grid-template-columns:auto auto minmax(0,1fr) auto}
+}
+:global(:is(.trace)):where(.root, .root *){height:100%;display:flex;flex-direction:column;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line2);background:#0b0b0b;overflow:hidden}
+:global(:is(.tc-h)):where(.root, .root *){display:flex;align-items:center;gap:10px;padding:16px 18px 12px;font-size:14px}
+:global(:is(.tc-h b)):where(.root, .root *){font-weight:600}
+:global(:is(.tc-h .mono.dim)):where(.root, .root *){color:var(--ink3);font-size:12px}
+:global(:is(.tc-ic)):where(.root, .root *){display:grid;color:var(--blue2)}
+:global(:is(.tc-ic .ic)):where(.root, .root *){width:16px;height:16px}
+:global(:is(.tc-live)):where(.root, .root *){display:inline-flex;align-items:center;gap:6px;font-size:13px}
+:global(:is(.tc-meta)):where(.root, .root *){display:flex;gap:36px;padding:0 18px 16px;border-bottom:1px solid var(--line)}
+:global(:is(.tc-meta small)):where(.root, .root *){display:block;color:var(--ink3);font-size:12px}
+:global(:is(.tc-meta b)):where(.root, .root *){font-size:13.5px;font-weight:500}
+:global(:is(.tc-g)):where(.root, .root *){flex:1;display:grid;grid-template-columns:minmax(170px,.42fr) 1fr}
+:global(:is(.tc-n)):where(.root, .root *){border-right:1px solid var(--line)}
+:global(:is(.tc-s)):where(.root, .root *){display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-bottom:1px solid var(--line);color:var(--ink4);font-size:12.5px}
+:global(:is(.tc-s .ic)):where(.root, .root *){width:14px;height:14px}
+:global(:is(.tc-r)):where(.root, .root *){height:42px;display:flex;align-items:center;gap:10px;padding:0 14px;font-size:12.5px}
+:global(:is(.tc-n .tc-r .mono:nth-child(2))):where(.root, .root *){flex:1;color:var(--ink)}
+:global(:is(.tc-n .tc-r .mono.dim)):where(.root, .root *){color:var(--ink3)}
+:global(:is(.tc-n .ico)):where(.root, .root *){display:grid;place-items:center;width:18px;color:var(--ink3);font:11px var(--mono)}
+:global(:is(.tc-n .ico .ic)):where(.root, .root *){width:14px;height:14px;color:var(--blue2)}
+:global(:is(.tc-t)):where(.root, .root *){position:relative;background-image:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:25% 100%}
+:global(:is(.tc-ax)):where(.root, .root *){position:relative;height:40px;border-bottom:1px solid var(--line);font:11px var(--mono);color:var(--ink4)}
+:global(:is(.tc-ax span)):where(.root, .root *){position:absolute;top:13px;margin-left:6px}
+:global(:is(.tc-t .tc-r)):where(.root, .root *){position:relative;padding:0}
+:global(:is(.tc-b)):where(.root, .root *){position:absolute;left:var(--l);width:0;height:2px;border-radius:2px;background:#5a5a5a;transition:width .8s var(--ease) var(--d)}
+:global(:is(.tc-b)):where(.root, .root *)::before{content:"";position:absolute;left:0;top:-4px;width:1px;height:10px;background:#5a5a5a}
+:global(:is(.tc-b.blue)):where(.root, .root *),:global(:is(.tc-b.green)):where(.root, .root *){height:22px;border-radius:6px;font:500 11px var(--mono);display:flex;align-items:center;padding-left:7px;overflow:hidden;white-space:nowrap}
+:global(:is(.tc-b.blue)):where(.root, .root *)::before,:global(:is(.tc-b.green)):where(.root, .root *)::before{display:none}
+:global(:is(.tc-b.blue)):where(.root, .root *){background:rgba(0,112,243,.22);box-shadow:inset 0 0 0 1px #0070f3;color:#a8d0ff}
+:global(:is(.tc-b.green)):where(.root, .root *){background:rgba(15,166,149,.2);box-shadow:inset 0 0 0 1px #0fa695;color:#86e6d6}
+:global(:is(.tc-b.live)):where(.root, .root *){background:linear-gradient(90deg,#3291ff,rgba(50,145,255,0));height:2px}
+@media (max-width:900px){
+  :global(:is(.wf)):where(.root, .root *){grid-template-columns:1fr}
+  :global(:is(.wf-r)):where(.root, .root *){height:500px}
+  :global(:is(.wf-r>.pane)):where(.root, .root *){overflow-x:auto;overflow-y:hidden}
+  :global(:is(.tree)):where(.root, .root *){min-width:640px}
+  :global(:is(.trace)):where(.root, .root *){min-width:560px}
+}
+@media (max-width:560px){
+  :global(:is(.wf-r)):where(.root, .root *){height:460px}
+  :global(:is(.wf-t)):where(.root, .root *){font-size:15px}
+}
+:global(:is(.sx .mono)):where(.root, .root *),:global(:is(.trace .mono)):where(.root, .root *),:global(:is(.tree .mono)):where(.root, .root *){text-transform:none;letter-spacing:0}
+:global(:is(.wf-r>.pane)):where(.root, .root *){direction:ltr}
+/* step 1: the dashboard, built piece by piece */
+:global(:is(.db)):where(.root, .root *){height:100%;display:grid;grid-template-columns:54px minmax(0,1fr);border-radius:10px;box-shadow:inset 0 0 0 1px var(--line2);background:#0b0b0b;overflow:hidden}
+:global(:is(.db [style*="--k"])):where(.root, .root *){opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+:global(:is(.db.build [style*="--k"])):where(.root, .root *){opacity:1;transform:none;transition-delay:calc(var(--k)*110ms)}
+:global(:is(.db-side)):where(.root, .root *){display:flex;flex-direction:column;align-items:center;gap:18px;padding:14px 0;border-right:1px solid var(--line)}
+:global(:is(.db-side .logo)):where(.root, .root *){width:26px;height:26px}
+:global(:is(.db-ni)):where(.root, .root *){display:grid;place-items:center;width:32px;height:32px;border-radius:8px;color:var(--ink4)}
+:global(:is(.db-ni .ic)):where(.root, .root *){width:17px;height:17px}
+:global(:is(.db-ni.on)):where(.root, .root *){background:var(--s2);color:var(--ink)}
+:global(:is(.db-main)):where(.root, .root *){display:flex;flex-direction:column;min-width:0}
+:global(:is(.db-top)):where(.root, .root *){display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 16px;border-bottom:1px solid var(--line);font:12.5px var(--mono);color:var(--ink3)}
+:global(:is(.db-top .crumb b)):where(.root, .root *){color:var(--ink)}
+:global(:is(.db-av)):where(.root, .root *){width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--s3);font:600 10px var(--f);color:var(--ink2)}
+:global(:is(.db-body)):where(.root, .root *){flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;padding:18px 18px 28px;min-height:0}
+:global(:is(.db-col)):where(.root, .root *){display:flex;flex-direction:column;gap:26px;min-width:0}
+:global(:is(.sxd)):where(.root, .root *){position:relative;border:1px dashed rgba(255,255,255,.32);border-radius:9px}
+:global(:is(.sxd)):where(.root, .root *)::after{content:attr(data-tag);position:absolute;right:-1px;top:calc(100% + 2px);font:10.5px var(--mono);background:#ededed;color:#0a0a0a;padding:1px 5px;border-radius:2px;white-space:nowrap;direction:ltr}
+:global(:is(.db-search)):where(.root, .root *){display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;font-size:13px;color:var(--ink4)}
+:global(:is(.db-search .ic)):where(.root, .root *){width:15px;height:15px}
+:global(:is(.db-list)):where(.root, .root *){flex:1;padding:12px 10px;display:flex;flex-direction:column;gap:6px;min-height:0}
+:global(:is(.db-h)):where(.root, .root *){margin:0 2px 4px;font-size:13px;font-weight:600}
+:global(:is(.db-row)):where(.root, .root *){display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;background:var(--s1);box-shadow:inset 0 0 0 1px var(--line);transition:background .35s,box-shadow .35s}
+:global(:is(.db-row .flag)):where(.root, .root *){width:26px;height:26px;border-radius:7px}
+:global(:is(.db-row b)):where(.root, .root *){display:block;font-size:13px;font-weight:500;line-height:1.2}
+:global(:is(.db-row small)):where(.root, .root *){display:block;font-size:11.5px;color:var(--ink3)}
+:global(:is(.db-row .grow)):where(.root, .root *){flex:1;min-width:0}
+:global(:is(.db-row.on)):where(.root, .root *){background:linear-gradient(90deg,rgba(0,112,243,.16),rgba(0,112,243,.03));box-shadow:inset 0 0 0 1px rgba(50,145,255,.55)}
+:global(:is(.db-map)):where(.root, .root *){flex:1;min-height:150px;overflow:hidden;background:#080808}
+:global(:is(.db-map svg)):where(.root, .root *){position:absolute;inset:0;width:100%;height:100%;border-radius:9px}
+:global(:is(.db-map .dots circle)):where(.root, .root *){fill:rgba(255,255,255,.14)}
+:global(:is(.db-map .rt)):where(.root, .root *){fill:none;stroke:#3291ff;stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1}
+:global(:is(.db-map .o)):where(.root, .root *){fill:rgba(255,255,255,.35)}
+:global(:is(.db-map .h)):where(.root, .root *){fill:#fff}
+:global(:is(.db-map .t)):where(.root, .root *){fill:#3291ff;stroke:rgba(50,145,255,.35);stroke-width:6}
+:global(:is(.db-map .lb rect)):where(.root, .root *){fill:#161616;stroke:rgba(255,255,255,.14)}
+:global(:is(.db-map .lb text)):where(.root, .root *){fill:#ededed;font:500 11px var(--f)}
+:global(:is(.db-map .lb.hot rect)):where(.root, .root *){fill:#0070f3;stroke:none}
+:global(:is(.db-map .lb.hot text)):where(.root, .root *){fill:#fff}
+:global(:is(.db-conn)):where(.root, .root *){display:flex;align-items:center;gap:12px;padding:12px}
+:global(:is(.db-pw)):where(.root, .root *){width:42px;height:42px;flex:none;border-radius:50%;display:grid;place-items:center;background:#ededed;color:#0a0a0a;box-shadow:0 0 0 5px rgba(255,255,255,.05)}
+:global(:is(.db-pw .ic)):where(.root, .root *){width:18px;height:18px}
+:global(:is(.db-conn .grow)):where(.root, .root *){flex:1;min-width:0}
+:global(:is(.db-conn small)):where(.root, .root *){display:block;font-size:11.5px;color:var(--ink3)}
+:global(:is(.db-conn b)):where(.root, .root *){font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+:global(:is(.db-ms)):where(.root, .root *){font:500 12.5px var(--mono);color:var(--blue2);padding:4px 8px;border-radius:7px;background:rgba(0,112,243,.14);direction:ltr}
+@media (max-width:900px){
+  :global(:is(.db)):where(.root, .root *){min-width:600px}
+}
+/* ---------- desktop experience: the window is the box (no box around it) ---------- */
+:global(:is(.wf-r)):where(.root, .root *){box-shadow:none!important;background:none!important;border-radius:0!important}
+:global(:is(.wf-r>.pane)):where(.root, .root *){inset:0!important}
+:global(:is(.wf-r>.pane>.tree)):where(.root, .root *){border-radius:10px;box-shadow:inset 0 0 0 1px var(--line2);background:#0b0b0b;padding:0 22px}

@@ -1,0 +1,31 @@
+/* Home · devices */
+/* ---------- rings (devices) ---------- */
+:global(:is(.rings)):where(.root, .root *){position:relative;height:440px;border:1px solid var(--line2);overflow:hidden}
+:global(:is(.rings > svg)):where(.root, .root *){position:absolute;inset:0;width:100%;height:100%}
+:global(:is(.rings .ring-c)):where(.root, .root *){fill:none;stroke:rgba(255,255,255,.22);stroke-dasharray:2 4;transform-box:fill-box;transform-origin:center}
+:global(:is(.rings .core)):where(.root, .root *){position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;display:grid;place-items:center;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line3)}
+:global(:is(.rings .core .logo)):where(.root, .root *){width:30px;height:30px}
+:global(:is(.rings .nd)):where(.root, .root *){position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:8px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line2);font-size:14px;color:var(--ink2);white-space:nowrap;transition:color .25s,box-shadow .25s}
+:global(:is(.rings .nd .ic)):where(.root, .root *){width:16px;height:16px}
+:global(:is(.rings .nd:hover)):where(.root, .root *),:global(:is(.rings .nd.hot)):where(.root, .root *){color:var(--ink);box-shadow:inset 0 0 0 1px var(--line3)}
+:global(:is(.rings .beam)):where(.root, .root *){stroke:var(--blue2);stroke-width:1.2;fill:none;opacity:0;transition:opacity .3s}
+:global(:is(.rings .beam.on)):where(.root, .root *){opacity:1}
+@media (max-width:900px){
+  :global(:is(.rings)):where(.root, .root *){height:420px}
+}
+@media (max-width:560px){
+  :global(:is(.rings)):where(.root, .root *){height:460px}
+  :global(:is(.rings .nd)):where(.root, .root *){font-size:12.5px;padding:0 9px;height:32px}
+  :global(:is(.rings)):where(.root, .root *){height:520px}
+}
+/* devices + downloads: one connected grid, like the bento */
+:global(:is(.rings)):where(.root, .root *){border-color:var(--line2)}
+/* rings: the link draws itself from the core, then a packet travels along it */
+:global(:is(.rings .beam)):where(.root, .root *){opacity:1;stroke-dasharray:1;stroke-dashoffset:1;transition:none}
+:global(:is(.rings .pk)):where(.root, .root *){fill:#fff;opacity:0;transition:opacity .3s}
+:global(:is(.rings .pk.on)):where(.root, .root *){opacity:1;transition-delay:.6s}
+:global(:is(.rings .nd.hot)):where(.root, .root *){box-shadow:inset 0 0 0 1px rgba(50,145,255,.6),0 0 22px -6px rgba(0,112,243,.7)}
+:global(:is(.rings .core)):where(.root, .root *){transition:box-shadow .3s}
+@media (prefers-reduced-motion:reduce){
+  :global(:is(.rings .pk)):where(.root, .root *){display:none}
+}

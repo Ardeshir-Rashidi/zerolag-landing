@@ -1,0 +1,119 @@
+/* Page · download */
+:global(:is(.pp.awake .pp-off)):where(.root, .root *){opacity:0;pointer-events:none}
+:global(:is(.pp.awake .pp-app)):where(.root, .root *){opacity:1}
+:global(:is(.pp.awake .pp-app [style*="--k"])):where(.root, .root *){opacity:1;transform:none;transition-delay:calc(.15s + var(--k)*90ms)}
+:global(:is(.pp.awake .pp-home)):where(.root, .root *){opacity:1}
+/* ---------- device frames ---------- */
+:global(:is(.ax-fit)):where(.root, .root *){position:relative;overflow:hidden}
+:global(:is(.ax-fit>.ax-stage)):where(.root, .root *){position:absolute;left:0;top:0;transform-origin:0 0;transform:scale(var(--k,.4))}
+:global(:is(.dv-mac)):where(.root, .root *){width:min(100%,780px)}
+:global(:is(.dv-lid)):where(.root, .root *){position:relative;padding:14px 14px 18px;border-radius:20px 20px 6px 6px;background:#0b0b0b;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.16),0 0 0 1px #000}
+:global(:is(.dv-notch)):where(.root, .root *){position:absolute;top:14px;left:50%;width:13%;height:14px;transform:translateX(-50%);border-radius:0 0 8px 8px;background:#0b0b0b;z-index:2}
+:global(:is(.dv-mac .dv-scr)):where(.root, .root *){aspect-ratio:1440/900;border-radius:7px}
+:global(:is(.dv-base)):where(.root, .root *){position:relative;height:18px;margin:0 -8%;border-radius:3px 3px 22px 22px;background:linear-gradient(#4a4a4a,#2a2a2a 30%,#1a1a1a 70%,#0f0f0f);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 30px 50px -24px rgba(0,0,0,.95)}
+:global(:is(.dv-base)):where(.root, .root *)::before{content:"";position:absolute;top:0;left:50%;width:15%;height:7px;transform:translateX(-50%);border-radius:0 0 10px 10px;background:linear-gradient(#141414,#262626)}
+:global(:is(.dv-mon)):where(.root, .root *){width:min(100%,760px);display:flex;flex-direction:column;align-items:center}
+:global(:is(.dv-bez)):where(.root, .root *){width:100%;padding:10px 10px 0;border-radius:14px;background:#0c0c0c;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.15),0 50px 90px -40px rgba(0,0,0,.95)}
+:global(:is(.dv-mon .dv-scr)):where(.root, .root *){aspect-ratio:1600/900;border-radius:4px}
+:global(:is(.dv-chin)):where(.root, .root *){display:block;height:22px;position:relative}
+:global(:is(.dv-chin)):where(.root, .root *)::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px;border-radius:50%;background:#2c2c2c}
+:global(:is(.dv-neck)):where(.root, .root *){width:15%;height:56px;background:linear-gradient(90deg,#161616,#2e2e2e 50%,#161616);clip-path:polygon(12% 0,88% 0,100% 100%,0 100%)}
+:global(:is(.dv-foot)):where(.root, .root *){width:38%;height:12px;border-radius:12px 12px 5px 5px;background:linear-gradient(#333,#151515);box-shadow:0 18px 30px -14px rgba(0,0,0,.95)}
+:global(:is(.ax-menubar .sp)):where(.root, .root *),:global(:is(.ax-task .sp)):where(.root, .root *),:global(:is(.ax-tb .sp)):where(.root, .root *){flex:1}
+:global(:is(.ax-task)):where(.root, .root *){position:absolute;left:0;right:0;bottom:0;height:52px;display:flex;align-items:center;justify-content:center;gap:12px;padding:0 24px;background:rgba(16,16,16,.94);border-top:1px solid rgba(255,255,255,.08);font:500 14px var(--f);color:#cfcfcf;width:1600px}
+:global(:is(.ax-task i)):where(.root, .root *){width:30px;height:30px;border-radius:8px;background:#2f2f2f}
+:global(:is(.ax-task i.on)):where(.root, .root *){background:#eaeaea}
+:global(:is(.ax-task .sp)):where(.root, .root *){position:absolute}
+/* ---------- Apps: devices on black, one blue glow behind them, the version + download under the device ---------- */
+:global(:is(.dv-desk)):where(.root, .root *){background:#000}
+/* the home-hero dashboard inside the Mac / Windows screens (fixed desktop layout at any viewport) */
+:global(:is(.ax-stage .dsh)):where(.root, .root *){position:absolute;border-radius:14px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 40px 90px -30px rgba(0,0,0,.95)!important}
+:global(:is(.ax-stage .dsh)):where(.root, .root *)::before{display:none}
+:global(:is(.ax-stage .dsh .win-body)):where(.root, .root *){grid-template-columns:58px 236px minmax(0,1fr) 300px!important;grid-template-rows:none!important;height:calc(100% - 40px)!important}
+:global(:is(.ax-stage .dsh .w-side)):where(.root, .root *){display:flex!important}
+:global(:is(.ax-stage .dsh .w-locs)):where(.root, .root *){display:flex!important}
+:global(:is(.ax-stage .dsh .win-tag)):where(.root, .root *){display:inline-flex!important}
+:global(:is(.ax-stage .dsh .w-conn)):where(.root, .root *){border:0!important;border-inline-start:1px solid var(--line)!important}
+:global(:is(.ax-stage .dsh .power)):where(.root, .root *){width:108px!important;height:108px!important}
+:global(:is(.ax-stage .dsh .win-bar)):where(.root, .root *){grid-template-columns:1fr auto 1fr!important}
+:global(:is(.ax-stage .dsh .crumb)):where(.root, .root *){justify-self:auto!important}
+:global(:is(.ax-stage .dsh-win .win-bar)):where(.root, .root *){grid-template-columns:auto 1fr auto!important;padding-inline-end:0}
+:global(:is(.ax-stage .dsh-win .crumb)):where(.root, .root *){align-items:center}
+:global(:is(.ax-stage .dsh-win .crumb .logo)):where(.root, .root *){margin-inline-end:4px}
+:global(:is(.wctl)):where(.root, .root *){display:flex;height:100%}
+:global(:is(.wctl i)):where(.root, .root *){position:relative;width:46px;height:100%}
+:global(:is(.wctl i)):where(.root, .root *)::before{content:"";position:absolute;left:18px;right:18px;top:50%;height:1px;background:#9a9a9a}
+:global(:is(.wctl i:nth-child(2))):where(.root, .root *)::before{top:15px;bottom:15px;height:auto;background:none;box-shadow:inset 0 0 0 1px #9a9a9a}
+:global(:is(.wctl i:nth-child(3))):where(.root, .root *)::before{transform:rotate(45deg)}
+:global(:is(.wctl i:nth-child(3))):where(.root, .root *)::after{content:"";position:absolute;left:18px;right:18px;top:50%;height:1px;background:#9a9a9a;transform:rotate(-45deg)}
+:global(:is(.ax-task)):where(.root, .root *){background:rgba(14,14,14,.96)}
+:global(:is(.pp.pp-and)):where(.root, .root *){border-radius:38px;padding:8px;background:linear-gradient(145deg,#262626,#0c0c0c 45%,#171717)}
+:global(:is(.pp.pp-and .pp-scr)):where(.root, .root *){border-radius:31px}
+:global(:is(.pp.pp-and .pp-status)):where(.root, .root *){padding:0 18px}
+:global(:is(.pp.pp-and .pp-status .island)):where(.root, .root *){width:11px;height:11px;border-radius:50%;background:#050505;box-shadow:0 0 0 1.5px #161616}
+:global(:is(.pp.pp-and .pp-home)):where(.root, .root *){width:30%;height:4px}
+/* the desktop app fills the screen */
+:global(:is(.dv-mac .ax-stage .dsh)):where(.root, .root *){left:0;top:0;width:1440px;height:900px;border-radius:0}
+:global(:is(.dv-mon .ax-stage .dsh)):where(.root, .root *){left:0;top:0;width:1600px;height:848px;border-radius:0}
+:global(:is(.ax-stage .dsh)):where(.root, .root *){box-shadow:none!important}
+:global(:is(.dv-mac .ax-stage .dsh .win-bar)):where(.root, .root *){padding-inline:22px}
+/* ---------- phones on Apps: real status bars, app bars and tab bars ---------- */
+:global(:is(.pp-status .sb-r)):where(.root, .root *){display:flex;align-items:center;gap:5px;color:#f2f2f2}
+:global(:is(.pp-status svg)):where(.root, .root *){fill:currentColor;display:block}
+:global(:is(.sb-ios)):where(.root, .root *){padding:0 22px 0 26px!important;height:46px!important;font:600 14px var(--f)}
+:global(:is(.sb-ios .sb-sig)):where(.root, .root *){width:17px;height:11px}
+:global(:is(.sb-ios .sb-wifi)):where(.root, .root *){width:15px;height:11px}
+:global(:is(.sb-ios .sb-bat)):where(.root, .root *){width:25px;height:12px}
+:global(:is(.sb-ios .island)):where(.root, .root *){width:92px!important;height:27px!important;background:#000!important;box-shadow:0 0 0 1px #121212}
+:global(:is(.sb-and)):where(.root, .root *){padding:0 18px!important;height:40px!important;font:500 13px var(--f)}
+:global(:is(.sb-and .sb-r)):where(.root, .root *){gap:6px}
+:global(:is(.sb-and .sb-wifi)):where(.root, .root *){width:14px;height:11px}
+:global(:is(.sb-and .sb-tri)):where(.root, .root *){width:11px;height:11px}
+:global(:is(.sb-and .sb-bata)):where(.root, .root *){width:7px;height:12px}
+:global(:is(.sb-and em)):where(.root, .root *){font:500 12px var(--f);font-style:normal;color:#e6e6e6;margin-inline-start:-1px}
+:global(:is(.pp-top.ab-ios)):where(.root, .root *){justify-content:center;padding:4px 2px 0;gap:7px}
+:global(:is(.pp-top.ab-ios b)):where(.root, .root *){font-size:15px;font-weight:600}
+:global(:is(.ab-ios .sp)):where(.root, .root *){flex:1}
+:global(:is(.ab-btn)):where(.root, .root *){width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#161616;box-shadow:inset 0 0 0 1px var(--line2);color:var(--ink2)}
+:global(:is(.ab-btn .ic)):where(.root, .root *){width:15px;height:15px}
+:global(:is(.pp-top.ab-and)):where(.root, .root *){gap:14px;padding:6px 4px 0}
+:global(:is(.pp-top.ab-and>.ic)):where(.root, .root *){width:20px;height:20px;color:var(--ink2)}
+:global(:is(.pp-top.ab-and b)):where(.root, .root *){font-size:18px;font-weight:500;letter-spacing:-.01em}
+:global(:is(.ab-chip)):where(.root, .root *){display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:8px;background:#151515;box-shadow:inset 0 0 0 1px var(--line2);font-size:11.5px;color:var(--ink2)}
+:global(:is(.pp-tabs)):where(.root, .root *){margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);align-items:center}
+:global(:is(.pp-tabs>span)):where(.root, .root *){display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--ink4)}
+:global(:is(.pp-tabs .tb-i)):where(.root, .root *){display:grid;place-items:center}
+:global(:is(.pp-tabs .ic)):where(.root, .root *){width:21px;height:21px}
+:global(:is(.pp-tabs small)):where(.root, .root *){font-size:10px;font-weight:500;letter-spacing:.01em}
+:global(:is(.pp-tabs>span.on)):where(.root, .root *){color:#4ea1ff}
+:global(:is(.tb-ios)):where(.root, .root *){margin-inline:-14px;padding:9px 6px 30px;background:rgba(18,18,18,.94);border-top:1px solid rgba(255,255,255,.08)}
+:global(:is(.tb-and)):where(.root, .root *){margin-inline:-14px;padding:10px 6px 26px;background:#0f1114}
+:global(:is(.tb-and .tb-i)):where(.root, .root *){width:56px;height:30px;border-radius:999px;transition:background .3s}
+:global(:is(.tb-and>span.on)):where(.root, .root *){color:#e8f1ff}
+:global(:is(.tb-and>span.on .tb-i)):where(.root, .root *){background:rgba(0,112,243,.32)}
+:global(:is(.tb-and small)):where(.root, .root *){font-size:10.5px}
+:global(:is(.pp.pp-ios .pp-home)):where(.root, .root *){width:118px;height:5px;margin-left:-59px;bottom:8px;background:rgba(255,255,255,.85)}
+:global(:is(.pp.pp-and .pp-home)):where(.root, .root *){width:96px!important;height:4px!important;margin-left:-48px;bottom:9px;background:rgba(255,255,255,.7)}
+:global(:is(.pp.pp-ios .pp-loc)):where(.root, .root *),:global(:is(.pp.pp-and .pp-loc)):where(.root, .root *){margin-bottom:14px}
+/* ---------- Download page: a big stage on top shows the device; the four download cards under it switch it ---------- */
+:global(:is(.page .dlsec [data-slot=mobile])):where(.root, .root *){display:block!important}
+:global(:is(.page .dlx-top)):where(.root, .root *){position:relative;display:grid;place-items:center;padding:clamp(48px,5vw,72px) var(--rg) clamp(40px,4vw,60px)}
+:global(:is(.dlx-cap)):where(.root, .root *){position:absolute;top:22px;inset-inline-start:var(--rg);font:12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink4)}
+:global(:is(.dlx-cap b)):where(.root, .root *){color:var(--ink2);font-weight:500}
+:global(:is(.page .dlx-top .dev-stage)):where(.root, .root *){position:relative;isolation:isolate;width:100%;min-height:clamp(360px,44vw,580px);display:grid;place-items:center}
+:global(:is(.page .dlx-top .dev-stage)):where(.root, .root *)::before{content:"";position:absolute;left:50%;top:50%;width:min(80%,900px);height:70%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(0,112,243,.42),rgba(0,112,243,.12) 55%,transparent);filter:blur(46px);z-index:-1;pointer-events:none}
+:global(:is(.page .dlx-top .dev-v)):where(.root, .root *){grid-area:1/1;width:100%;display:grid;place-items:center}
+:global(:is(.page .dlx-top .dev-v>.mob-r)):where(.root, .root *){zoom:.84;padding:0!important;width:auto}
+:global(:is(.page .dlx-top .dev-v>.mob-r)):where(.root, .root *)::before{display:none}
+:global(:is(.page .dlx-top .dv-mac)):where(.root, .root *){width:min(76%,780px)}
+:global(:is(.page .dlx-top .dv-mon)):where(.root, .root *){width:min(86%,740px)}
+:global(:is(.page .dlx-cards .dlc)):where(.root, .root *){position:relative;cursor:pointer;transform:none!important}
+:global(:is(.page .dlx-cards .dlc.on)):where(.root, .root *){background:linear-gradient(180deg,rgba(0,112,243,.14),rgba(0,112,243,.02) 62%)}
+:global(:is(.page .dlx-cards .dlc.on)):where(.root, .root *)::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#3291ff 30%,#3291ff 70%,transparent)}
+:global(:is(.page .dlx-cards .dlc:not(.on):hover)):where(.root, .root *){background:rgba(255,255,255,.02)}
+:global(:is(.page .dlx-cards .dlc:focus-visible)):where(.root, .root *){outline:2px solid var(--blue2);outline-offset:-2px}
+@media (max-width:820px){
+  :global(:is(.dlx-cap)):where(.root, .root *){top:16px}
+  :global(:is(.page .dlx-top .dv-mac)):where(.root, .root *){width:min(88%,780px)}
+  :global(:is(.page .dlx-top .dv-mon)):where(.root, .root *){width:100%}
+}

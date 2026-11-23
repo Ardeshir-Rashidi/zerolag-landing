@@ -1,0 +1,14 @@
+/* Page · games */
+:global(:is(.mk .lg img)):where(.root, .root *){width:100%;height:100%;object-fit:cover}
+:global(:is(.mk .ms s)):where(.root, .root *){color:var(--ink4)}
+:global(:is(.mk .ms svg)):where(.root, .root *){width:11px;height:11px}
+:global(:is(.mk .cover)):where(.root, .root *){position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none}
+:global(:is(.mk .cover img)):where(.root, .root *){width:100%;height:100%;object-fit:cover;filter:brightness(.35)}
+:global(:is(.mk:hover .cover)):where(.root, .root *){opacity:1}
+:global(:is(.more)):where(.root, .root *){display:flex;justify-content:center;margin-top:22px}
+/* launchers = game cards */
+:global(:is(.mk .lg.pl)):where(.root, .root *){box-shadow:none}
+:global(:is(.mk .lg.pl b)):where(.root, .root *){font:700 11px var(--f);letter-spacing:-.02em}
+:global(:is(.page .more+.note)):where(.root, .root *){margin-top:16px}
+/* games/apps note under the grid */
+:global(:is(.page .more+.note)):where(.root, .root *){text-align:center}

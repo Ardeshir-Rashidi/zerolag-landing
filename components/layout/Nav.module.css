@@ -1,0 +1,52 @@
+/* Layout · nav */
+:global(:is(.btn.dark)):where(.root, .root *){background:var(--s4);border-color:var(--s4);color:#f5f5f5}
+:global(:is(.btn.dark:hover)):where(.root, .root *){background:#383838;border-color:#383838}
+:global(:is(.btn.ghost)):where(.root, .root *){color:var(--ink2);height:36px;padding:0 10px}
+:global(:is(.btn.ghost:hover)):where(.root, .root *){color:var(--ink)}
+:global(:is(.nav)):where(.root, .root *){position:sticky;top:0;z-index:50;background:rgba(10,10,10,.94);border-bottom:1px solid var(--line)}
+:global(:is(.nav-in)):where(.root, .root *){max-width:calc(var(--max) + var(--pad)*2);margin:auto;padding-inline:var(--pad);height:72px;display:flex;align-items:center;gap:24px}
+:global(:is(.links)):where(.root, .root *){display:flex;gap:4px;margin-inline:auto}
+:global(:is(.links a)):where(.root, .root *){padding:8px 10px;font-size:14px;color:var(--ink2);border-radius:8px;transition:color .2s}
+:global(:is(.links a:hover)):where(.root, .root *),:global(:is(.links a.on)):where(.root, .root *){color:var(--ink)}
+:global(:is(.nav-r)):where(.root, .root *){display:flex;align-items:center;gap:10px}
+:global(:is(.menu-btn)):where(.root, .root *){display:none;width:40px;height:40px;border-radius:8px;place-items:center;box-shadow:inset 0 0 0 1px var(--line2)}
+:global(:is(.sheet)):where(.root, .root *){display:grid;padding:4px var(--pad) 16px;border-top:1px solid var(--line)}
+:global(:is(.sheet a)):where(.root, .root *){padding:14px 2px;font-size:17px;border-bottom:1px solid var(--line)}
+:global(:is(.sheet .btn)):where(.root, .root *){margin-top:14px;border-bottom:0}
+@media (max-width:1060px){
+  :global(:is(.links)):where(.root, .root *){display:none}
+  :global(:is(.menu-btn)):where(.root, .root *){display:grid}
+  :global(:is(.nav-r)):where(.root, .root *){margin-inline-start:auto}
+}
+@media (max-width:560px){
+  :global(:is(.hide-s)):where(.root, .root *){display:none}
+  :global(:is(.nav-r .btn.dark span)):where(.root, .root *){display:none}
+  :global(:is(.nav-r .btn.dark)):where(.root, .root *){width:40px;padding:0}
+}
+/* full-screen menu */
+:global(:is(.sheet)):where(.root, .root *){position:absolute;top:100%;left:0;right:0;height:calc(100dvh - 72px);display:flex;flex-direction:column;justify-content:space-between;padding:28px var(--pad) calc(28px + env(safe-area-inset-bottom));background:#0a0a0a;border-top:1px solid var(--line);opacity:0;transform:translateY(-8px);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+:global(:is(.sheet.open)):where(.root, .root *){opacity:1;transform:none}
+:global(:is(.sheet-l)):where(.root, .root *){display:flex;flex-direction:column}
+:global(:is(.sheet-l a)):where(.root, .root *){padding:14px 2px;font-size:clamp(26px,7vw,34px);font-weight:500;letter-spacing:-.03em;border-bottom:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease),color .2s}
+:global(:is(.sheet.open .sheet-l a)):where(.root, .root *){opacity:1;transform:none}
+:global(:is(.sheet-l a:nth-child(1))):where(.root, .root *){transition-delay:.05s}
+:global(:is(.sheet-l a:nth-child(2))):where(.root, .root *){transition-delay:.09s}
+:global(:is(.sheet-l a:nth-child(3))):where(.root, .root *){transition-delay:.13s}
+:global(:is(.sheet-l a:nth-child(4))):where(.root, .root *){transition-delay:.17s}
+:global(:is(.sheet-l a:nth-child(5))):where(.root, .root *){transition-delay:.21s}
+:global(:is(.sheet-l a:nth-child(6))):where(.root, .root *){transition-delay:.25s}
+:global(:is(.sheet-l a.on)):where(.root, .root *){color:var(--ink)}
+:global(:is(.sheet-l a:not(.on))):where(.root, .root *){color:var(--ink2)}
+:global(:is(.sheet-b)):where(.root, .root *){display:grid;grid-template-columns:1fr 1fr;gap:10px;opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease) .32s,transform .45s var(--ease) .32s}
+:global(:is(.sheet.open .sheet-b)):where(.root, .root *){opacity:1;transform:none}
+:global(:is(.sheet-b .btn)):where(.root, .root *){justify-content:center;height:46px;font-size:15px;margin:0}
+@media (max-height:560px){
+  :global(:is(.sheet-l a)):where(.root, .root *){font-size:22px;padding:9px 2px}
+}
+@media (min-width:1061px){
+  /* ---------- nav: the links sit on the page's true centre, whatever the widths on either side ---------- */
+  :global(:is(.nav-in)):where(.root, .root *){display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+  :global(:is(.nav-in>.brand)):where(.root, .root *){justify-self:start}
+  :global(:is(.nav-in>.links)):where(.root, .root *){margin-inline:0}
+  :global(:is(.nav-in>.nav-r)):where(.root, .root *){justify-self:end}
+}

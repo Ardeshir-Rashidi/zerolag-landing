@@ -1,0 +1,80 @@
+/* Globe engine styles (vendored with lib/map/zerolag-map.ts). */
+
+/* =====================================================================
+   ZeroLag map — styles. Everything lives under .zlmap, nothing leaks out.
+   ===================================================================== */
+
+.zlmap{
+  /* surfaces: floor #000, then one step lighter per layer */
+  --zl-low:#0A0A0A;--zl-base:#171717;--zl-high:#262626;--zl-highest:#404040;
+  --zl-on:#FFFFFF;--zl-on-var:#A1A1A1;
+  --zl-sel:#0070F3;--zl-relay:#2A2A2A;--zl-live:#3291FF;
+  position:relative;overflow:hidden;width:100%;height:100%;
+  background:var(--zl-low);color:var(--zl-on);
+  font:500 12px Geist,system-ui,sans-serif;
+  touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;outline:none}
+.zlmap.is-dragging{cursor:grabbing}
+.zlmap:focus-visible{box-shadow:inset 0 0 0 2px #fff}
+.zlmap>canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
+.zl-pins{position:absolute;inset:0;pointer-events:none}
+
+/* pins: the element sits on the point; the badge floats above it */
+.zl-pin{position:absolute;left:0;top:0;width:0;height:0;z-index:1;transition:opacity .25s}
+.zl-pin.is-hidden{opacity:0;visibility:hidden}
+.zl-pin .bdg{position:absolute;left:0;bottom:14px;transform:translateX(-50%);padding:5px;border-radius:13px;background:#0B0C0E;
+  box-shadow:0 12px 26px -8px rgba(0,0,0,.75);pointer-events:auto;transition:transform .25s cubic-bezier(.2,.7,.3,1)}
+.zl-pin .bdg::after{content:"";position:absolute;left:50%;bottom:-5px;width:12px;height:12px;background:inherit;transform:translateX(-50%) rotate(45deg);border-radius:3px;z-index:-1}
+.zl-pin .ico{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--zl-high);color:#fff}
+.zl-pin .ico svg{width:20px;height:20px}
+.zl-pin .dot{position:absolute;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#fff;
+  box-shadow:0 0 0 3px rgba(50,145,255,.25),0 0 16px 5px rgba(50,145,255,.45)}
+.zl-pin .dot::before,.zl-pin .dot::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(50,145,255,.5);animation:zl-ping 2.6s ease-out infinite}
+.zl-pin .dot::after{inset:-22px;border-color:rgba(50,145,255,.28);animation-delay:1.3s}
+.zl-pin .lbl{position:absolute;left:0;top:12px;transform:translateX(-50%);white-space:nowrap;font-size:11.5px;font-weight:600;line-height:16px;
+  background:rgba(11,12,14,.85);padding:3px 8px;border-radius:8px;color:#E6EAEC;pointer-events:none}
+.zl-pin[data-act] .bdg{cursor:pointer}
+.zl-pin[data-act] .bdg:hover{transform:translateX(-50%) scale(1.08)}
+.zl-pin .bdg:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+.zl-pin.relay{z-index:2}.zl-pin.sel,.zl-pin.home{z-index:3}
+.zl-pin.home .ico{background:#fff;color:#000}
+.zl-pin.sel .ico{background:var(--zl-sel)}
+.zl-pin.sel .dot{background:#fff;box-shadow:0 0 0 4px rgba(0,112,243,.3),0 0 18px 4px rgba(0,112,243,.6)}
+.zl-pin.sel .dot::before,.zl-pin.sel .dot::after{border-color:rgba(0,112,243,.5)}
+.zl-pin.city .bdg{padding:4px;border-radius:10px}
+.zl-pin.city .ico{width:26px;height:26px;border-radius:7px;color:#D6DBDD}
+.zl-pin.city .ico svg{width:16px;height:16px}
+.zl-pin.city .dot{width:9px;height:9px;margin:-4.5px 0 0 -4.5px;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.12)}
+.zl-pin.relay .bdg{padding:4px;border-radius:11px}
+.zl-pin.relay .ico{width:30px;height:30px;border-radius:8px;background:var(--zl-relay);color:#fff}
+.zl-pin.relay .ico svg{width:18px;height:18px}
+.zl-pin.relay.best .ico{background:#fff;color:#000}
+.zl-pin.relay .dot{width:9px;height:9px;margin:-4.5px 0 0 -4.5px;background:#d4d4d4;box-shadow:0 0 0 3px rgba(255,255,255,.12)}
+.zl-pin.relay .dot::before,.zl-pin.relay .dot::after{display:none}
+.zl-pin.relay .lbl{top:10px}
+.zl-pin.ctry .bdg{padding:4px;border-radius:11px}
+.zl-pin.ctry .ico{width:28px;height:28px;border-radius:8px;background:#202328 center/cover no-repeat}
+.zl-pin.ctry .dot{width:8px;height:8px;margin:-4px 0 0 -4px;background:#CFD4D6;box-shadow:0 0 10px rgba(255,255,255,.35)}
+.zl-pin.city .dot::before,.zl-pin.city .dot::after,.zl-pin.ctry .dot::before,.zl-pin.ctry .dot::after{display:none}
+/* far or crowded pins shrink to their dot */
+.zl-pin.is-mini .bdg{transform:translateX(-50%) scale(0);pointer-events:none}
+.zl-pin.is-mini .lbl{display:none}
+.zl-pin.is-mini[data-act] .dot{pointer-events:auto;cursor:pointer}
+@keyframes zl-ping{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.9);opacity:0}}
+
+/* map controls */
+.zl-ctl{position:absolute;top:14px;inset-inline-end:14px;z-index:3;display:flex;gap:8px}
+/* the ocean is Base (#171717), so controls sit one layer up */
+.zl-ctl button{all:unset;box-sizing:border-box;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--zl-high);color:#fff;cursor:pointer;transition:background .15s}
+.zl-ctl button:hover{background:var(--zl-highest)}
+.zl-ctl button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.zl-ctl svg{width:22px;height:22px}
+
+@media (prefers-reduced-motion:reduce){.zl-pin .dot::before,.zl-pin .dot::after{animation:none}}
+
+.map.zlmap{position:absolute;inset:0;width:auto;height:auto;background:transparent}
+.zlmap.zl-static{cursor:default;touch-action:auto}
+.zlmap .zl-pin .lbl{font-weight:500;background:rgba(10,10,10,.88);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.zlmap .zl-pin .bdg{background:#0a0a0a;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 12px 26px -8px rgba(0,0,0,.75)}
+.zlmap .zl-ctl button{background:#161616;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);border-radius:999px}
+.zlmap .zl-ctl button:hover{background:#222}

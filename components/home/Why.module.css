@@ -1,0 +1,26 @@
+/* Home · why */
+/* ---------- strip / why ---------- */
+:global(:is(.std)):where(.root, .root *){display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 22px;border:1px solid var(--line2)}
+:global(:is(.std-chips)):where(.root, .root *){display:flex;flex-wrap:wrap;gap:8px}
+:global(:is(.std-chips span)):where(.root, .root *){font:12px var(--mono);padding:6px 10px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--line2);color:var(--ink2)}
+:global(:is(.why)):where(.root, .root *){display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:end}
+:global(:is(.why .btn)):where(.root, .root *){margin-top:24px}
+@media (max-width:820px){
+  :global(:is(.why)):where(.root, .root *){grid-template-columns:1fr}
+}
+/* why: eyebrow row, then title and text aligned at the top */
+:global(:is(#why .eyebrow)):where(.root, .root *){display:block;margin-bottom:18px}
+:global(:is(.why)):where(.root, .root *){align-items:start}
+:global(:is(.why .lead)):where(.root, .root *){margin-top:6px}
+:global(:is(.fbw .std)):where(.root, .root *){padding:20px var(--rg)!important}
+:global(:is(.page>section.fdh.vs)):where(.root, .root *)::before{background:linear-gradient(var(--fl),var(--fl)) 50% var(--vtop,3px)/1px calc(100% - var(--vtop,3px) - 4px) no-repeat!important}
+@media (max-width:820px){
+  :global(:is(.page>section.fdh.vs)):where(.root, .root *)::before{background:none!important}
+}
+:global(:is(#why .fbw)):where(.root, .root *){position:relative}
+:global(:is(#why .fbw)):where(.root, .root *)::after{content:"";position:absolute;bottom:0;left:calc(var(--ext) * -1);right:calc(var(--ext) * -1);height:1px;background:linear-gradient(90deg,transparent,var(--fl) var(--ext),var(--fl) calc(100% - var(--ext)),transparent);pointer-events:none}
+:global(:is(#why .fbw+.eyebrow)):where(.root, .root *){margin-top:var(--cp)}
+@media (min-width:821px){
+  :global(:is(#why)):where(.root, .root *){--vtop:75px}
+  :global(:is(#why .fbw .std)):where(.root, .root *){height:72px;padding-block:0!important;align-items:center}
+}

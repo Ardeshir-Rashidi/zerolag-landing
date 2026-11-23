@@ -1,0 +1,42 @@
+/* Home · routing */
+:global(:is(.flag.xs)):where(.root, .root *){width:18px;height:18px;border-radius:50%}
+:global(:is(.rp)):where(.root, .root *){display:flex;flex-direction:column;gap:14px;padding:50px 22px 20px;border-inline-end:1px solid var(--line)}
+:global(:is(.rp-h)):where(.root, .root *){display:flex;align-items:center;gap:10px}
+:global(:is(.rp-h .flag)):where(.root, .root *){width:34px;height:34px;border-radius:9px}
+:global(:is(.rp-h>div)):where(.root, .root *){flex:1;min-width:0}
+:global(:is(.rp-h b)):where(.root, .root *){display:block;font-weight:500;font-size:15px}
+:global(:is(.rp-h small)):where(.root, .root *){font-size:12px;color:var(--ink3)}
+:global(:is(.rp-st)):where(.root, .root *){display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink3);white-space:nowrap}
+:global(:is(.rp-l)):where(.root, .root *){display:flex;flex-direction:column;gap:12px}
+:global(:is(.rp .rr)):where(.root, .root *){grid-template-columns:minmax(0,1fr) 54px;row-gap:6px}
+:global(:is(.rp .rr .tr)):where(.root, .root *){grid-column:1/-1;grid-row:2}
+:global(:is(.rp .rr.isp .nm)):where(.root, .root *){color:var(--ink3)}
+:global(:is(.rp .rr.isp .tr i)):where(.root, .root *){background:repeating-linear-gradient(90deg,#4a4a4a 0 6px,transparent 6px 10px)}
+:global(:is(.rp .rr.isp .v)):where(.root, .root *){color:var(--ink3)}
+:global(:is(.rp-f)):where(.root, .root *){margin-top:auto;align-self:flex-start;position:static}
+:global(:is(.rp-map)):where(.root, .root *){position:relative;min-height:320px;background:#070707}
+@media (max-width:640px){
+  :global(:is(.rp-map)):where(.root, .root *){order:-1;min-height:280px}
+  :global(:is(.rp)):where(.root, .root *){border-inline-end:0;border-top:1px solid var(--line);padding-top:20px}
+}
+/* smart routing section */
+:global(:is(.rpanel)):where(.root, .root *){display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.3fr);margin-top:48px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line2);overflow:hidden;background:#0a0a0a}
+:global(:is(.rpanel .rp)):where(.root, .root *){padding:22px;gap:18px;border-inline-end:1px solid var(--line2)}
+:global(:is(.rp-pick)):where(.root, .root *){display:flex;flex-wrap:wrap;gap:6px}
+:global(:is(.rp-pick button)):where(.root, .root *){display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px 0 6px;border-radius:999px;font-size:12.5px;color:var(--ink3);box-shadow:inset 0 0 0 1px var(--line);transition:all .2s}
+:global(:is(.rp-pick button:hover)):where(.root, .root *){color:var(--ink)}
+:global(:is(.rp-pick button.on)):where(.root, .root *){color:var(--ink);background:var(--s2);box-shadow:inset 0 0 0 1px var(--line3)}
+:global(:is(.rp-sum)):where(.root, .root *){margin-top:auto;display:flex;align-items:flex-end;gap:28px;padding-top:18px;border-top:1px solid var(--line)}
+:global(:is(.rp-sum small)):where(.root, .root *){display:block;font-size:12px;color:var(--ink3);margin-bottom:2px}
+:global(:is(.rp-sum b)):where(.root, .root *){font-size:34px;font-weight:500;letter-spacing:-.03em;direction:ltr;display:inline-block}
+:global(:is(.rp-sum b em)):where(.root, .root *){font-style:normal;font-size:13px;color:var(--ink3);margin-inline-start:3px;letter-spacing:0}
+:global(:is(.rp-sum b.dim)):where(.root, .root *){color:var(--ink3)}
+:global(:is(.rp-sum .pct)):where(.root, .root *){margin-inline-start:auto;margin-bottom:8px;font:500 12px var(--mono);padding:4px 8px;border-radius:6px;background:var(--s2);color:var(--ink3);direction:ltr}
+:global(:is(.rp-map)):where(.root, .root *){position:relative;min-height:500px;background:#070707}
+:global(:is(.rp-map .rp-f)):where(.root, .root *){position:absolute;top:16px;inset-inline-end:16px;z-index:3}
+@media (max-width:900px){
+  :global(:is(.rpanel)):where(.root, .root *){grid-template-columns:1fr}
+  :global(:is(.rp-map)):where(.root, .root *){order:-1;min-height:340px}
+  :global(:is(.rpanel .rp)):where(.root, .root *){border-inline-end:0;border-top:1px solid var(--line2)}
+}
+:global(:is(.fbw .rpanel .rp)):where(.root, .root *){padding:var(--rg)}

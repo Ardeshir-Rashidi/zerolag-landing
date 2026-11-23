@@ -1,0 +1,19 @@
+/* Home · insights */
+/* ---------- analytics chart ---------- */
+:global(:is(.fig)):where(.root, .root *){position:relative;height:420px;margin-top:8px}
+:global(:is(.fig>svg)):where(.root, .root *){position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+:global(:is(.fig svg text)):where(.root, .root *){fill:var(--ink4);font:11px var(--mono)}
+:global(:is(.fig .chip2)):where(.root, .root *){position:absolute;transform:translate(-50%,-50%);pointer-events:none;transition:opacity .4s}
+:global(:is(.tip)):where(.root, .root *){position:absolute;z-index:4;pointer-events:none;min-width:240px;border-radius:10px;background:rgba(12,12,12,.96);box-shadow:inset 0 0 0 1px var(--line2),0 20px 40px -16px #000;font-size:13px;overflow:hidden}
+:global(:is(.end-pill)):where(.root, .root *){position:absolute;inset-inline-end:0;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:rgba(12,12,12,.94);box-shadow:inset 0 0 0 1px var(--line2);font-size:13px;color:var(--ink2);direction:ltr}
+:global(:is(.end-pill b)):where(.root, .root *){color:var(--ink);font-weight:600}
+:global(:is(.pct.blue)):where(.root, .root *){background:var(--blueBg);color:var(--blue2)}
+:global(:is(.pct.teal)):where(.root, .root *){background:rgba(15,166,149,.16);color:#3fd0bf}
+:global(:is(.legend)):where(.root, .root *){display:flex;gap:16px;font-size:13px;color:var(--ink2);flex-wrap:wrap}
+:global(:is(.legend span)):where(.root, .root *){display:inline-flex;align-items:center;gap:7px}
+:global(:is(.sw)):where(.root, .root *){width:14px;height:2px;border-radius:2px;display:inline-block}
+@media (max-width:640px){
+  :global(:is(.fig)):where(.root, .root *){height:320px}
+  :global(:is(.fig .chip2)):where(.root, .root *){display:none}
+}
+:global(:is(.head-r .legend)):where(.root, .root *){margin-top:2px}

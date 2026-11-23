@@ -1,0 +1,40 @@
+/* Page · locations */
+:global(:is(.dot.ok)):where(.root, .root *){background:var(--green2)}
+:global(:is(.world)):where(.root, .root *){position:relative;height:clamp(300px,40vw,500px);margin-bottom:56px}
+:global(:is(.rtable)):where(.root, .root *){border-top:1px solid var(--line)}
+:global(:is(.rrow)):where(.root, .root *){width:100%;text-align:start;color:inherit;font:inherit;display:grid;grid-template-columns:70px minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) 80px 110px;align-items:center;gap:12px;min-height:66px;padding:0 16px;border-bottom:1px solid var(--line);border-inline:1px solid var(--line);font-size:14px;transition:background .2s}
+:global(:is(.rrow:hover)):where(.root, .root *),:global(:is(.rrow.hot)):where(.root, .root *){background:var(--s1)}
+:global(:is(.rrow .cd)):where(.root, .root *){font:500 11.5px var(--mono);color:var(--ink2)}
+:global(:is(.rrow .rct)):where(.root, .root *){display:flex;align-items:center;gap:10px;font-size:15px}
+:global(:is(.rrow .rg)):where(.root, .root *){color:var(--ink2)}
+:global(:is(.rrow .pr)):where(.root, .root *){font:12px var(--mono);color:var(--ink3);direction:ltr;text-align:start}
+:global(:is(.rrow .ms)):where(.root, .root *){font:500 12.5px var(--mono);direction:ltr}
+:global(:is(.rrow .av)):where(.root, .root *){display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink2)}
+@media (max-width:760px){
+  :global(:is(.rrow)):where(.root, .root *){grid-template-columns:44px minmax(0,1fr) 60px;row-gap:2px;padding:12px}
+  :global(:is(.rrow .rg)):where(.root, .root *),:global(:is(.rrow .pr)):where(.root, .root *),:global(:is(.rrow .av)):where(.root, .root *){display:none}
+}
+:global(:is(.world)):where(.root, .root *){height:clamp(380px,48vw,600px)}
+:global(:is(.world .map)):where(.root, .root *){-webkit-mask-image:none;mask-image:none}
+:global(:is(.rrow .cd)):where(.root, .root *){display:flex;align-items:center;gap:8px}
+/* softer edges on the Locations globe */
+:global(:is(.world .map)):where(.root, .root *){-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%)}
+/* Locations globe: soft, rounded edges on every side (controls stay sharp) */
+:global(:is(.world .map)):where(.root, .root *){-webkit-mask-image:none;mask-image:none}
+:global(:is(.fbw .rrow)):where(.root, .root *){padding-inline:var(--rg)!important;border-bottom-color:var(--fl)!important}
+:global(:is(.fbw .rrow:last-child)):where(.root, .root *){border-bottom-color:transparent!important}
+/* ---------- locations table: a header row ---------- */
+:global(:is(.fbw .rrow.rhead)):where(.root, .root *){min-height:44px;background:rgba(255,255,255,.028);font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);cursor:default}
+:global(:is(.fbw .rrow.rhead>span)):where(.root, .root *){color:var(--ink3)!important;font:inherit!important}
+/* ---------- Locations: the network globe sits under the headline, open (no box), bigger ---------- */
+:global(:is(.page .lochero>.world.wp)):where(.root, .root *){grid-column:1/-1;position:relative;height:clamp(420px,50vw,720px);margin:clamp(12px,2vw,28px) calc(50% - 50vw) calc(clamp(40px,5vw,64px) * -1);pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
+:global(:is(.page .lochero>.world.wp .map)):where(.root, .root *){position:absolute;inset:0}
+/* ---------- Locations: the globe keeps its halo at the top, melts away in its lower third, and the next block slides over it without a top line ---------- */
+:global(:is(.page .lochero>.world.wp)):where(.root, .root *){height:clamp(460px,56vw,800px);-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 48%,rgba(0,0,0,.35) 72%,transparent 92%)!important;mask-image:linear-gradient(to bottom,#000 0,#000 48%,rgba(0,0,0,.35) 72%,transparent 92%)!important}
+:global(:is(.page>.lochero+section)):where(.root, .root *){position:relative;z-index:1;margin-top:calc(clamp(150px,20vw,300px) * -1)!important}
+/* ---------- Locations: the globe slides under an opaque block and fades there; the block itself is solid ---------- */
+:global(:is(.page .lochero>.world.wp)):where(.root, .root *){-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 38%,rgba(0,0,0,.9) 44%,rgba(0,0,0,.72) 50%,rgba(0,0,0,.52) 56%,rgba(0,0,0,.34) 62%,rgba(0,0,0,.2) 68%,rgba(0,0,0,.09) 74%,transparent 82%)!important;mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 38%,rgba(0,0,0,.9) 44%,rgba(0,0,0,.72) 50%,rgba(0,0,0,.52) 56%,rgba(0,0,0,.34) 62%,rgba(0,0,0,.2) 68%,rgba(0,0,0,.09) 74%,transparent 82%)!important}
+:global(:is(.page>.lochero+section)):where(.root, .root *){background:var(--bg);background-clip:content-box}
+:global(:is(.page>.lochero+section .head)):where(.root, .root *)::before{background:rgba(255,255,255,.028)!important}
+:global(:is(.page .lochero>.world.wp)):where(.root, .root *){justify-self:stretch}
