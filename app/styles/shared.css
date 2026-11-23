@@ -612,7 +612,7 @@
 .db.build .db-pw{animation:pwPulse 2s ease-in-out 1.6s infinite}
 @keyframes pwPulse{50%{box-shadow:0 0 0 9px rgba(50,145,255,.18)}}
 .sheet-l a:nth-child(7){transition-delay:.29s}
-html.lock,html.lock body{overflow:hidden}
+html.menu-open,html.menu-open body{overflow:hidden}
 /* scroll-linked motion */
 .js [data-sfx=tilt]{transform-origin:50% 0;will-change:transform}
 .js [data-sfx=grow]{transform:scale(calc(.93 + var(--p) * .07));opacity:calc(.2 + var(--p) * .8);transform-origin:50% 40%}
