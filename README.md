@@ -8,7 +8,7 @@ This repository contains the **landing and marketing website**. The ZeroLag dash
 
 [View live demo](https://ardeshir-rashidi.github.io/zerolag-landing/)
 
-![ZeroLag marketing website preview](docs/images/landing-preview.jpg)
+![ZeroLag marketing website preview](docs/images/landing-preview.png)
 
 ## Tech Stack
 
