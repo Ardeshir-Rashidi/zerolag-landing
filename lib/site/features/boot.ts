@@ -17,7 +17,7 @@ export default function* boot(site: any) {
   try { site.route(); } catch (e) { site.report(e, 'boot') }
   try { site.frameDraw(); } catch (e) { site.report(e, 'boot') }
   try { site.onScroll(); } catch (e) { site.report(e, 'boot') }
-  try { setTimeout(site.sfx, 50); } catch (e) { site.report(e, 'boot') }
+  try { site.sfx(); } catch (e) { site.report(e, 'boot') }
   /* globes: the country outlines are a separate file, fetched after the page is up */
   function geoData() {
     if (window.ZL_GEO) return Promise.resolve(window.ZL_GEO);

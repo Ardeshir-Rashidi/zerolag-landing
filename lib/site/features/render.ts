@@ -64,9 +64,15 @@ export default function* render(site: any) {
     const h = document.documentElement;
     try { h.lang = L; } catch (e) { site.report(e, 'applyLang') }
     try { h.dir = isFa() ? 'rtl' : 'ltr'; } catch (e) { site.report(e, 'applyLang') }
-    try { $$('[data-t]').forEach(el => el.textContent = t(el.dataset.t, {
-      n: C.length
-    })); } catch (e) { site.report(e, 'applyLang') }
+    try { $$('[data-t]').forEach(el => {
+      const text = t(el.dataset.t, { n: C.length });
+      // Keep the server-rendered headline spans instead of rebuilding them at hydration.
+      if (el.textContent !== text) {
+        el.textContent = text;
+        const heading = el.closest('[data-words]');
+        if (heading) heading.dataset.split = '';
+      }
+    }); } catch (e) { site.report(e, 'applyLang') }
     try { $$('[data-th]').forEach(el => {
       el.innerHTML = t(el.dataset.th);
       el.dataset.split = ''
@@ -75,13 +81,10 @@ export default function* render(site: any) {
       n: C.length
     })); } catch (e) { site.report(e, 'applyLang') }
     try { $$('[data-ta]').forEach(el => el.setAttribute('aria-label', t(el.dataset.ta))); } catch (e) { site.report(e, 'applyLang') }
-    try { $$('[data-words]').forEach(el => {
-      el.dataset.split = ''
-    }); } catch (e) { site.report(e, 'applyLang') }
     try { renderAll(); } catch (e) { site.report(e, 'applyLang') }
     try { site.words(); } catch (e) { site.report(e, 'applyLang') }
     try { $$('[data-words]').forEach(el => {
-      if (el.classList.contains('in')) {
+      if (!el.closest('.hero-head') && el.classList.contains('in')) {
         el.classList.remove('in');
         requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')))
       }

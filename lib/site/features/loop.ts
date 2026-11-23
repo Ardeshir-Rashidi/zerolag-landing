@@ -13,15 +13,49 @@ export default function* loop(site: any) {
 
   function mountGlobe(el, opts) {
     if (!el || !window.ZeroLagMap) return null;
-    const m = window.ZeroLagMap.mount(el, Object.assign({
+    const options = Object.assign({
       servers: SERVERS,
       relays: RELAYS,
       lang: L,
       controls: false,
       interactive: false
-    }, opts));
-    site.GLOBES.push(m);
-    return m
+    }, opts);
+    const bounds = el.getBoundingClientRect();
+    if (bounds.width && bounds.height && bounds.top < innerHeight + 160 && bounds.bottom > -160) {
+      const map = window.ZeroLagMap.mount(el, options);
+      site.GLOBES.push(map);
+      return map;
+    }
+    // Keep offscreen WebGL contexts and textures out of the hero's startup frame.
+    // Retain the latest requested state until the map approaches the viewport.
+    let map = null;
+    let destroyed = false;
+    const pending = new Map();
+    const deferred = {};
+    for (const name of ['select', 'setStatus', 'setLang', 'fit', 'view', 'intro', 'setNet', 'world', 'zoom', '_flagDirty']) {
+      deferred[name] = (...args) => {
+        if (destroyed) return;
+        if (map) return map[name](...args);
+        pending.delete(name);
+        pending.set(name, args);
+      };
+    }
+    const observer = new IntersectionObserver(entries => {
+      if (map || destroyed || !site.alive || !entries.some(e => e.isIntersecting)) return;
+      observer.disconnect();
+      map = window.ZeroLagMap.mount(el, options);
+      pending.forEach((args, name) => map[name](...args));
+      pending.clear();
+    }, { rootMargin: '160px' });
+    observer.observe(el);
+    deferred.destroy = () => {
+      destroyed = true;
+      observer.disconnect();
+      pending.clear();
+      map?.destroy();
+    };
+    site.GLOBES.push(deferred);
+    return deferred;
   }
   /* ---------------- frame loop + visibility ---------------- */
   try { site.live = new Set(); } catch (e) { site.report(e, 'loop') }
