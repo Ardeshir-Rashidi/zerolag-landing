@@ -49,7 +49,7 @@ export default function Nav() {
           {" "}
           <Link className="btn ghost hide-s" href="/pricing" data-t="login">Log in</Link>
           {" "}
-          <Link className="btn dark sm" href="/download">
+          <Link className="btn dark sm" href="/download" aria-label="Download">
             <svg className="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M12 3v12M7 10l5 5 5-5M5 21h14" />
             </svg>
@@ -66,7 +66,7 @@ export default function Nav() {
         {" "}
       </div>
       {" "}
-      <div className={`sheet ${s.root}`} id="sheet" hidden>
+      <div className={`sheet ${s.root}`} id="sheet" hidden inert>
         {" "}
         <nav className="sheet-l">
           <Link href="/games" data-t="nGames">Games</Link>
